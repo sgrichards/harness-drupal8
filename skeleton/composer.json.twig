@@ -27,6 +27,7 @@
         "webmozart/path-util": "^2.3"
     },
     "require-dev": {
+        "phpspec/phpspec": "^5.1",
         "webflo/drupal-core-require-dev": "^8.6.0"
     },
     "conflict": {
@@ -42,7 +43,12 @@
         "classmap": [
             "scripts/composer/ScriptHandler.php"
         ],
-        "files": ["load.environment.php"]
+        "files": ["load.environment.php"],
+        "psr-0": {
+            "": [
+                "src/"
+            ]
+        }
     },
     "scripts": {
         "pre-install-cmd": [
