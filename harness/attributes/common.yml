@@ -13,7 +13,7 @@ attributes.default:
     #   production  - leaner images with less tooling and drupal is run in production mode
     mode: development
 
-  docker-sync: no
+  docker-sync: yes
 
   php:
     ini:
