@@ -2,7 +2,7 @@
 # my127-harness - Directories
 /.my127ws
 /.github/
-
+/bin/
 
 # my127-harness - Files
 /.dockerignore

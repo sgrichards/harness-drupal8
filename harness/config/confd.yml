@@ -13,6 +13,7 @@ confd('harness:/'):
   - { src: skeleton/behat.yml }
   - { src: skeleton/composer.json }
   - { src: skeleton/Jenkinsfile }
+  - { src: skeleton/web/sites/default/settings.php }
   - { src: .env }
   - { src: docker-compose.yml }
   - { src: docker-sync.yml }

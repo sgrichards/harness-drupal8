@@ -10,6 +10,7 @@ harness('drupal8'):
       standard:
         - aws.bucket
         - app.repository
+        - drupal.salt
       secret:
         - aws.id
         - aws.key
