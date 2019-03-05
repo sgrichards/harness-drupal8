@@ -9,7 +9,7 @@
 FROM {{ @('namespace') }}_console:latest as console
 {% endif %}
 
-FROM my127/drupal8:7.2-fpm-alpine
+FROM my127/drupal8:7.2-fpm-stretch
 
 COPY root  /
 
