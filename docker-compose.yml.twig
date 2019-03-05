@@ -6,14 +6,14 @@ version: '3'
 services:
   chrome:
     build: docker/image/chrome
-    networks:
-      - shared
-      - private
     environment:
       HOST_OS_FAMILY: ${HOST_OS_FAMILY}
       APP_HOST: ${APP_HOST}
     labels:
       - traefik.enable=false
+    networks:
+      - private
+      - shared
   console:
     {% if @('app.build') == 'dynamic' %} 
     entrypoint: /entrypoint.dynamic.sh
@@ -40,11 +40,11 @@ services:
       DB_PASS: ${DB_PASS}
       DB_NAME: ${DB_NAME}
       DB_ROOT_PASS: ${DB_ROOT_PASS}
+    links:
+      - mysql:mysql
+      - redis:redis
     networks:
       - private
-    depends_on:
-      - mysql
-      - redis
   nginx:
     build: docker/image/nginx
     {% if @('app.build') == 'dynamic' %} 
@@ -58,8 +58,8 @@ services:
       - traefik.port=80
       - co.elastic.logs/module=nginx
       - co.elastic.metrics/module=nginx
-    depends_on:
-      - php-fpm
+    links:
+      - php-fpm:php-fpm
     networks:
       - private
       - shared
@@ -72,11 +72,14 @@ services:
     {% endif %} 
     labels:
       - traefik.enable=false
+    depends_on:
+      - console
+    links:
+      - mysql:mysql
+      - redis:redis
     networks:
       - private
       - shared
-    depends_on:
-      - console
     environment:
       <<: *APP_ENV_VARS
   mysql:
@@ -103,6 +106,7 @@ services:
       - co.elastic.logs/module=redis
     networks:
       - private
+      - shared
 networks:
   private:
     external: false
