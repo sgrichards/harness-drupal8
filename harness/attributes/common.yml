@@ -15,6 +15,9 @@ attributes.default:
 
   docker-sync: yes
 
+  frontend:
+    path: /app
+
   node:
     # only set this attribute if you wish to override the supplied node version, by default
     # the supplied version will be the current LTS.
