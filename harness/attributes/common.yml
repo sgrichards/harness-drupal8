@@ -15,8 +15,24 @@ attributes.default:
 
   docker-sync: yes
 
+  backend:
+    path: /app
+    build:
+      when: -f "composer.json"
+      steps:
+        - task "composer:install"
+    init:
+      steps:
+        - run "drupal cc"
+
   frontend:
     path: /app
+    watch: node_modules/.bin/gulp serve
+    build:
+      when: -f "package.json"
+      steps:
+        - run "npm install"
+        - run "node_modules/.bin/gulp build"
 
   node:
     # only set this attribute if you wish to override the supplied node version, by default
