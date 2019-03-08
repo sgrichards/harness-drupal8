@@ -5,9 +5,13 @@ function task_init()
     task "mysql:available"
     task "assets:apply"
 
-    {% for step in @('backend.init.steps') -%}
-    {{ step|raw }}
-    {% endfor %}
+    (
+        cd /app/{{ @('drupal.docroot') }}
+        {% for step in @('backend.init.steps') -%}
+        {{ step|raw }}
+        {% endfor %}
+        
+    )
 
     task "welcome"
 }

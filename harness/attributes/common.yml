@@ -23,7 +23,10 @@ attributes.default:
         - task "composer:install"
     init:
       steps:
-        - run "drupal cc"
+        - run "drupal cache:rebuild"
+        - run "drupal update:entities"
+        - run "drupal update:execute"
+        - run "drupal cache:rebuild"
 
   frontend:
     path: /app
@@ -38,6 +41,9 @@ attributes.default:
     # only set this attribute if you wish to override the supplied node version, by default
     # the supplied version will be the current LTS.
     version: null
+
+  drupal:
+    docroot: docroot
 
   php:
     ini:

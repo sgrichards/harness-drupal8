@@ -1,0 +1,7 @@
+#!/bin/bash
+
+function task_overlay_apply()
+{
+    run "rsync --exclude='*.twig' --exclude='docroot' --ignore-existing -a /home/build/application/overlay/ /app/"
+    run "rsync --exclude='*.twig' --ignore-existing -a /home/build/application/overlay/docroot/ /app/{{ @('drupal.docroot') }}/"
+}
