@@ -19,6 +19,7 @@ confd('harness:/'):
   - { src: application/overlay/docroot/sites/default/settings.php }
   - { src: application/overlay/phpcs.xml }
   - { src: application/overlay/phpunit.xml }
+  - { src: application/overlay/auth.json }
   - { src: .env }
   - { src: docker-compose.yml }
   - { src: docker-sync.yml }
