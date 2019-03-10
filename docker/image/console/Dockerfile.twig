@@ -1,11 +1,11 @@
 
-# github: https://github.com/my127/docker-drupal8-console
-# dockerhub: https://hub.docker.com/r/my127/drupal8-console
+# github: https://github.com/my127/docker-drupal8
+# dockerhub: https://hub.docker.com/r/my127/drupal8
 # 
 # NOTE: This image is provided to speed up the build time but all
 # the files needed and used are in './root'
 
-FROM my127/drupal8-console:7.2-fpm-stretch
+FROM my127/drupal8:7.2-fpm-stretch-console
 
 COPY .my127ws/docker/image/console/root /
 RUN chown -R build:build /home/build
