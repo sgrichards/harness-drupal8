@@ -6,14 +6,6 @@ harness('drupal8'):
       - proxy
     confd:
       - harness:/
-    attributes:
-      standard:
-        - aws.bucket
-        - app.repository
-      secret:
-        - drupal.salt
-        - aws.id
-        - aws.key
 ---
 import:
   - harness/config/*.yml

@@ -20,6 +20,7 @@ confd('harness:/'):
   - { src: application/overlay/phpcs.xml }
   - { src: application/overlay/phpunit.xml }
   - { src: application/overlay/auth.json }
+  - { src: application/skeleton/.gitignore }
   - { src: .env }
   - { src: docker-compose.yml }
   - { src: docker-sync.yml }
