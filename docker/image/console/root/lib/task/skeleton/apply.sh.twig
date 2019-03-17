@@ -1,7 +1,0 @@
-#!/bin/bash
-
-function task_skeleton_apply()
-{
-    run "rsync --exclude='*.twig' --exclude='docroot' --ignore-existing -a /home/build/application/skeleton/ /app/"
-    run "rsync --exclude='*.twig' --ignore-existing -a /home/build/application/skeleton/docroot/ /app/{{ @('drupal.docroot') }}/"
-}

@@ -1,12 +1,11 @@
 
 confd('harness:/'):
+  # base templates
   - { src: docker/image/console/Dockerfile }
   - { src: docker/image/console/root/lib/task/build/frontend.sh }
   - { src: docker/image/console/root/lib/task/build/backend.sh }
-  - { src: docker/image/console/root/lib/task/drupal/install.sh }
-  - { src: docker/image/console/root/lib/task/overlay/apply.sh }
-  - { src: docker/image/console/root/lib/task/skeleton/apply.sh }
   - { src: docker/image/console/root/lib/task/init.sh }
+  - { src: docker/image/console/root/lib/task/install.sh }
   - { src: docker/image/console/root/usr/local/etc/php/php.ini }
   - { src: docker/image/console/root/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini }
   - { src: docker/image/nginx/Dockerfile }
@@ -16,11 +15,13 @@ confd('harness:/'):
   - { src: docker/image/php-fpm/Dockerfile }
   - { src: docker/image/php-fpm/root/usr/local/etc/php/php.ini }
   - { src: docker/image/php-fpm/root/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini }
-  - { src: application/overlay/docroot/sites/default/settings.php }
-  - { src: application/overlay/phpcs.xml }
-  - { src: application/overlay/phpunit.xml }
   - { src: application/overlay/auth.json }
-  - { src: application/skeleton/.gitignore }
+  - { src: application/overlay/.dockerignore, dst: workspace:/.dockerignore }
   - { src: .env }
   - { src: docker-compose.yml }
   - { src: docker-sync.yml }
+  # harness-drupal templates
+  - { src: application/overlay/docroot/sites/default/settings.php }
+  - { src: application/overlay/phpcs.xml }
+  - { src: application/overlay/phpunit.xml }
+  - { src: application/skeleton/.gitignore }
