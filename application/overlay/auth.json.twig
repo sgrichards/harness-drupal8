@@ -6,10 +6,5 @@
             "password": "{{ repo.password }}"
         }{% if not loop.last %},{% endif %}
       {% endfor %}
-    },
-    "github-oauth": {
-      {% if @('composer.auth.github') %}
-        "github.com": "{{ @('composer.auth.github') }}"
-      {% endif %}
     }
 }
